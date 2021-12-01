@@ -7,7 +7,10 @@
     "start": "nodemon src/Server.js"
   },
   "dependencies": {
+<<<<<<< HEAD
     "cors": "^2.8.5",
+=======
+>>>>>>> b2f0f3469e64d03fab781ac13c819c768d862095
     "express": "^4.17.1",
     "mongodb": "^4.1.3"
   },

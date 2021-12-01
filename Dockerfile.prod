@@ -10,17 +10,16 @@ COPY client/ ./
 # this needs to use yarn instead of npm for it to work on windows :(
 RUN yarn build
 
-# !!! Comment out below if no MongoDB
-# # Stage 2: seed the mongoDB database
-# FROM mongo
-# WORKDIR /usr/db
-# COPY mongo/*.js /docker-entrypoint-initdb.d
+# Stage 2: seed the mongoDB database
+FROM mongo
+WORKDIR /usr/db
+COPY mongo/*.js /docker-entrypoint-initdb.d
 
 # Stage 3 : Build Express Server on container
 # copies over client side production build to /usr/src/client/build
 # copies over server side project folder to /usr/src/server and installs dependencies, etc.
 # final steps is to fire up the express server via "npm run start"
-FROM node:10.16-alpine as server
+FROM node:14.15.3-alpine as server
 WORKDIR /usr/src/app/
 COPY --from=client /usr/app/client-tempy/build/ ./client/build/
 WORKDIR /usr/src/app/server/
