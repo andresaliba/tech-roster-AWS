@@ -1,11 +1,11 @@
 # Production Build
 # Stage 1: Build react client on container
 # copies over client side project folder, installs dependencies, and runs command to build the production build
-FROM node:10.16-alpine as client
+FROM node:14.15.3-alpine as client
 WORKDIR /usr/app/client-tempy/
-COPY client/package*.json .
+COPY client/package*.json ./
 RUN npm install
-COPY client/ .
+COPY client/ ./
 # build the production version of the client side React Web app (creates /usr/app/client-tempy/build)
 # this needs to use yarn instead of npm for it to work on windows :(
 RUN yarn build
@@ -26,6 +26,6 @@ COPY --from=client /usr/app/client-tempy/build/ ./client/build/
 WORKDIR /usr/src/app/server/
 COPY server/package*.json ./
 RUN npm install -qy
-COPY server/ .
+COPY server/ ./
 EXPOSE 8080
 CMD ["npm", "start"]

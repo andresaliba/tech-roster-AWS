@@ -1,5 +1,5 @@
 #  Dockerfile for Node Express Backend api (development) - alpine is a popular lightweight server
-FROM node:10.16-alpine
+FROM node:14.15.3-alpine
 
 # Create App Directory
 RUN mkdir -p /usr/src/app
