@@ -28,11 +28,7 @@ services:
     volumes:
       - data-volume:/data/db
     environment:
-<<<<<<< HEAD
       MONGO_INITDB_DATABASE: dbTechs
-=======
-      MONGO_INITDB_DATABASE: dbData
->>>>>>> b2f0f3469e64d03fab781ac13c819c768d862095
     ports:
       - "27017:27017"
     networks:
